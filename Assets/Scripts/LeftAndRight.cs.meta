@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6063886942a8d0d408c38de825f47d9e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - playerMovement: {fileID: 4607595706381828649, guid: a0397067f3fe28947af8e431e653671e,
+      type: 3}
+  - rigidbody: {fileID: 4607595706381828654, guid: a0397067f3fe28947af8e431e653671e,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
