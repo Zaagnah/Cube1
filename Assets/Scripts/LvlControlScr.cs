@@ -3,23 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LvlControlScr : StartLvl
+public class LvlControlScr : Adv
 {
     
+    public GameObject buttonLoad;
     
-    //public void LoadLvl()
-    //{
-        
-    //    level = PlayerPrefs.GetInt("Level", level);
-    //    //if(level == 0)
-    //    //{
-    //    //    LoadFirstLevel();
-    //    //}
-    //    //else
-    //    //{
-    //        LoadLevel();
-    //    //}
-    //}
 
     public void LoadFirstLevel()
     {
@@ -29,7 +17,21 @@ public class LvlControlScr : StartLvl
     }
     public void LoadLevel()
     {
-        level = PlayerPrefs.GetInt("Level", level);
+        level = Social.PlayerPrefs.GetInt("Level", level);
         SceneManager.LoadScene(level);
+       if(level > 0)
+        {
+            SceneManager.LoadScene(level);
+        }
+        else if (level < 1)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
+
+    
 }

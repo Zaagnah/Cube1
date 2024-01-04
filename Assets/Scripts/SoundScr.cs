@@ -1,25 +1,17 @@
-﻿
-//using UnityEngine;
-
-//public class SoundScr : MonoBehaviour
-//{
-//    void Awake()
-//    {
-//        DontDestroyOnLoad(transform.gameObject);
-//    }
-//}
-
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SoundScr : MonoBehaviour
 {
+    [SerializeField]
+    private AudioSource audio;
     private static SoundScr instance = null;
     void Awake()
     {
+        audio.Play();
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(this);
         }
         else if (instance != this)
         {
@@ -28,3 +20,4 @@ public class SoundScr : MonoBehaviour
         }
     }
 }
+

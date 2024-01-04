@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿
+using System.Runtime.InteropServices;
+using UnityEngine;
+
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -6,44 +10,62 @@ public class PlayerMovement : MonoBehaviour
     public float forwardForce = 2000f;
     public float sidewaysForce = 70f;
     public Joystick joystick;
-   
+    public GameObject _joystick;
+    bool mobile;
 
-  
-    void FixedUpdate()
+    
+   private void Awake()
+   {
+        if(Application.isMobilePlatform)
+        {
+            mobile = true;
+
+        }else mobile = false;
+        Debug.Log(mobile);
+   }
+
+
+
+         private   void FixedUpdate()
     {
-        
-        
-            rigidbody.AddForce(0, 0, forwardForce * Time.deltaTime);
 
-            //MoveRight();
-            //MoveLeft();
+        //Debug.Log(currentPlatform);
+        rigidbody.AddForce(0, 0, forwardForce * Time.deltaTime);
 
-            //if (Input.GetKey("d"))
-            //{
-            //    rigidbody.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-            //}
-            //if (Input.GetKey("a"))
-            //{
-            //    rigidbody.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-            //}
-
-            if (rigidbody.position.y < -1f)
-            {
-                FindObjectOfType<GameManager>().EndGame();
-            }
-            MoveMove();
         
+
+        if (rigidbody.position.y < -1f)
+        {
+            FindObjectOfType<GameManager>().EndGame();
+        }
+
+        MoveMove();
+
     }
+
     public void MoveMove()
     {
-        ////float horizontalInput = Input.GetAxis("Horizontal"); //клавиши
+        if(mobile)
+        {
+        
+            _joystick.SetActive(true);    
+            float horizontalInput = joystick.Horizontal;
+            transform.Translate(new Vector3(horizontalInput, 0, 0) * sidewaysForce * Time.deltaTime);
+            //panelL.SetActive(true);
+        }else {
+            
         //    float verticalInput = Input.GetAxis("Vertical");
 
-        float horizontalInput = joystick.Horizontal;
-        transform.Translate(new Vector3(horizontalInput, 0, 0) * sidewaysForce * Time.deltaTime);
+        
+            float horizontalInput = Input.GetAxis("Horizontal"); //клавиши
+            //Debug.Log(currentPlatform + " klava");
+            transform.Translate(new Vector3(horizontalInput, 0, 0) * sidewaysForce * Time.deltaTime);
+          }
+            
+        
+        
     }
 
-   
-    
-   
+
+
 }

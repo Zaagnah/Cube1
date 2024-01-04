@@ -3,7 +3,12 @@ guid: 1adeddc2cea5a39479f88f5b888f3953
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - completeLevelUI: {instanceID: 0}
+  - joystick: {instanceID: 0}
+  - menuButt: {instanceID: 0}
+  - soundMenu: {fileID: 3070920396277493297, guid: 305d6e6e2ae997a49bf2549b4c0d83c6,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

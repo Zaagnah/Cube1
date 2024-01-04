@@ -19,8 +19,8 @@ public class StartLvl : MonoBehaviour
         }
         SceneManager.LoadScene(nextSceneIndex);
         Debug.Log("loaded");
-        PlayerPrefs.SetInt("Level", nextSceneIndex);
-        PlayerPrefs.Save();
+        Social.PlayerPrefs.SetInt("Level", nextSceneIndex);
+        Social.PlayerPrefs.Save();
         Debug.Log("saved");
         level = nextSceneIndex;
     }
